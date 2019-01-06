@@ -190,11 +190,11 @@ namespace SimpleWebStressTool
             //cts.Cancel(true);
 
             EndTime = DateTime.Now;
-            var TimeTaken = (EndTime.Subtract(StartTime)).Seconds;
+            var TimeTaken = (EndTime.Subtract(StartTime)).TotalSeconds;
             RequestsPerSecondLabel.Visible = false;
             TotalRequestsLabel.Text = "Total Requests Sent: "+TotalRequestsSent;
             TotalRequestsLabel.Visible = true;
-            TotalTimeLabel.Text = "Total Time Taken: "+TimeTaken+" seconds";
+            TotalTimeLabel.Text = "Total Time Taken: " + $"{TimeTaken:0.#}" + " seconds";
             TotalTimeLabel.Visible = true;
             RequestsDroppedLabel.Text = "Total Requests Dropped By Server: "+RequestsDropped;
             RequestsDroppedLabel.Visible = true;
