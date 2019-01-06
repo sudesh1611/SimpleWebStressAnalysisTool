@@ -16,7 +16,7 @@ Depending on the Operating System, following runtimes are required by the tool t
 
 - **Windows:** .NET Framework 4.6.1 runtime is needed for this app to work.This is installed by default in Windows. If not installed, you can install it by following instructions from [here](https://dotnet.microsoft.com/download/thank-you/net472).
 
-- **Linux:** .NET Core 2.1 Runtime is needed to be installed for this app to work. If not installed, depending on your linux distro , you can install it from [here](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
+- **Linux:** .NET Core SDK is needed to be installed for this app to work. If not installed, depending on your linux distro , you can install it from [here](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/sdk-current).
 
 For installing, follow the instructions included in the setup zip files.
 
