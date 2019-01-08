@@ -51,7 +51,7 @@ namespace WebStressConsoleApp
                    }
                });
             }
-            catch (OperationCanceledException e)
+            catch (OperationCanceledException)
             {
                 //Console.WriteLine(e.Message);
             }
@@ -80,7 +80,7 @@ namespace WebStressConsoleApp
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 RequestsDropped++;
                 return false;
@@ -97,7 +97,7 @@ namespace WebStressConsoleApp
 
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             DateTime StartTime;
             DateTime EndTime;
@@ -129,6 +129,7 @@ namespace WebStressConsoleApp
 
                 Console.Write("\nEnter number of threads to use (1-500): ");
                 result = int.TryParse(Console.ReadLine(), out int NumberThreads);
+
                 while (!result || NumberThreads < 1 || NumberThreads > 500)
                 {
                     Console.WriteLine("\nERROR: Number is not valid!");
@@ -137,7 +138,38 @@ namespace WebStressConsoleApp
                 }
                 attackWithEverything.NumberThreads = NumberThreads;
 
-                Console.WriteLine("\nPress Enter to start analysis and after starting press Enter to stop");
+                System.Console.WriteLine("\nPress Enter to see the response of the above url...\n");
+                Console.ReadKey();
+                using (var client=new HttpClient())
+                {
+                    try
+                    {
+                    var xyz = await client.GetAsync(InputUrl);
+                    if (xyz.IsSuccessStatusCode)
+                    {
+                        var conten = await xyz.Content.ReadAsStringAsync();
+                        conten=conten.Replace(" ",String.Empty);
+                        System.Console.WriteLine("Response Content: "+conten);
+                        System.Console.WriteLine("Status Code: "+xyz.StatusCode);
+                        System.Console.WriteLine("Response Content Size: "+conten.Length+" Bytes");
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Server responded negatively!!\nStatus Code: "+xyz.StatusCode);
+                        System.Console.WriteLine("Terminated Application. Try Again...\n");
+                        return;
+                    }
+                }
+                catch (Exception)
+                {
+                    System.Console.WriteLine("Can't Connect to the server. Check your Internet Connection!!");
+                    System.Console.WriteLine("Terminated Application. Try Again...\n");
+                    return;
+                }
+                }
+                    
+
+                Console.WriteLine("\n\nPress Enter to start analysis and after starting press Enter to stop...");
 
                 Console.ReadKey();
 
@@ -162,7 +194,7 @@ namespace WebStressConsoleApp
             Console.WriteLine($"Average Speed of Transmission: {((TotalBytesRecieved / 1048576.0) / TimeTaken):0.##} MB/s");
             Console.WriteLine($"Average Requests sent per second: {(TotalRequestsSent / TimeTaken):0.##}\n\n");
 
-            Console.Write("\nPress Any Key to Exit...");
+            Console.WriteLine("\nPress Any Key to Exit...");
             Console.ReadKey();
             return;
         }
