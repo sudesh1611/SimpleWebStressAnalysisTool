@@ -4,11 +4,11 @@
 This is a simple tool to check if the website satisfies the Availability principle of CIA triad i.e. how much web traffic can  a website handle. This tool is available for both Windows Operating Systems and Linux Operating Systems.
 
 - **Windows:** You can download this tool as Console App as well as Windows GUI App
-    - **Windows Console App**: [Download Zip File](https://sudeshkumar.me/SimpleWebStressAnalysisTool(WindowsConsole).zip)
-    - **Windows GUI App**: [Download Zip File](https://sudeshkumar.me/SimpleWebStressAnalysisTool(WindowsGUI).zip)
+    - **Windows Console App**: [Download Zip File](Downloadables/SimpleWebStressAnalysisTool(WindowsConsole).zip)
+    - **Windows GUI App**: [Download Zip File](Downloadables/SimpleWebStressAnalysisTool(WindowsGUI).zip)
 
 - **Linux:** You can download this tool as Console App only for Linux operating systems
-    - **Linux Console App (64 bit)**: [Download Zip File](https://sudeshkumar.me/SimpleWebStressAnalysisTool(LinuxConsole-64bit).zip)
+    - **Linux Console App (64 bit)**: [Download Zip File](Downloadables/SimpleWebStressAnalysisTool(LinuxConsole-64bit).zip)
 
 ## Prerequisites and Installation
 
